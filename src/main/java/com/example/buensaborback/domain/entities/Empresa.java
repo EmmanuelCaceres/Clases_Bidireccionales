@@ -1,9 +1,6 @@
 package com.example.buensaborback.domain.entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
@@ -23,7 +20,7 @@ public class Empresa extends Base{
     private Integer cuil;
 
 
-    @OneToMany(mappedBy = "empresa",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "empresa",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @Builder.Default
     private Set<Sucursal> sucursales = new HashSet<>();
 

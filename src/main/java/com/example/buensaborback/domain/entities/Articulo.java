@@ -24,7 +24,7 @@ public abstract class Articulo {
     protected String denominacion;
     protected Double precioVenta;
 
-    @OneToMany(mappedBy = "articulo",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "articulo",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @Builder.Default
     protected Set<Imagen> imagenes = new HashSet<Imagen>();
 
@@ -36,7 +36,7 @@ public abstract class Articulo {
     @Builder.Default
     protected Set<Promocion> estaEnPromociones = new HashSet<>();
 
-    @OneToMany(mappedBy = "articulo",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "articulo",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @Builder.Default
     protected Set<DetallePedido> detallesPedido = new HashSet<>();
 

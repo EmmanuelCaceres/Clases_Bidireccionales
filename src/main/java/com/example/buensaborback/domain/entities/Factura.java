@@ -1,10 +1,7 @@
 package com.example.buensaborback.domain.entities;
 
 import com.example.buensaborback.domain.entities.enums.FormaPago;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -30,7 +27,8 @@ public class Factura extends Base{
     private FormaPago formaPago;
     private Double totalVenta;
 
-    @OneToOne(mappedBy = "factura")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
 

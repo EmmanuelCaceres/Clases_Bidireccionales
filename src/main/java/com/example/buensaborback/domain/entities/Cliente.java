@@ -27,7 +27,7 @@ public class Cliente extends Base{
     private Usuario usuario;
 
 
-    @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @Builder.Default
     private Set<Pedido> pedidos = new HashSet<>();
 

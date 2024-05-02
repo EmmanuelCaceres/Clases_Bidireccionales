@@ -28,7 +28,7 @@ public class Domicilio extends Base{
     @Builder.Default
     private Set<Cliente> clientes = new HashSet<>();
 
-    @OneToMany(mappedBy = "domicilio")
+    @OneToMany(mappedBy = "domicilio",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @Builder.Default
     private Set<Pedido> pedidos = new HashSet<>();
 

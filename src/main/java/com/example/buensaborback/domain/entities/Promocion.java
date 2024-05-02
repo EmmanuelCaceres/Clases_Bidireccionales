@@ -27,7 +27,7 @@ public class Promocion extends Base {
     private Double precioPromocional;
     private TipoPromocion tipoPromocion;
 
-    @OneToMany(mappedBy = "promocion",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "promocion",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     private Set<Imagen> imagenes= new HashSet<>();
 

@@ -29,7 +29,7 @@ public class Pedido extends Base{
     private FormaPago formaPago;
     private LocalDate fechaPedido;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "domicilio_id")
     private Domicilio domicilio;
 
@@ -37,11 +37,10 @@ public class Pedido extends Base{
     @JoinColumn(name = "sucursal_id")
     private Sucursal sucursal;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "factura_id")
+    @OneToOne(mappedBy = "pedido")
     private Factura factura;
 
-    @OneToMany(mappedBy = "pedido",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pedido",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @Builder.Default
     private Set<DetallePedido> detallePedidos = new HashSet<>();
 

@@ -21,7 +21,7 @@ public class Localidad extends Base{
     @JoinColumn(name = "provincia_id")
     private Provincia provincia;
 
-    @OneToMany(mappedBy = "localidad",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "localidad",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
     private Set<Domicilio> domicilios = new HashSet<>();
 }
